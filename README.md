@@ -78,7 +78,7 @@ black-dashboard-angular
 │   │       │   └── dashboard.component.ts
 │   │       ├── icons
 │   │       │   ├── icons.component.html
-│   │       │   └── icons.component.ts
+│   │       │   └── products.component.ts
 │   │       ├── map
 │   │       │   ├── map.component.html
 │   │       │   └── map.component.ts
@@ -93,7 +93,7 @@ black-dashboard-angular
 │   │       │   └── tables.component.ts
 │   │       ├── typography
 │   │       │   ├── typography.component.html
-│   │       │   └── typography.component.ts
+│   │       │   └── announces.component.ts
 │   │       └── user
 │   │           ├── user.component.html
 │   │           └── user.component.ts

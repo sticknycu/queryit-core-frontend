@@ -16,18 +16,12 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/icons",
-    title: "Icons",
+    path: "/products",
+    title: "Produse",
     rtlTitle: "الرموز",
-    icon: "icon-atom",
+    icon: "icon-components",
     class: ""
   },
-  {
-    path: "/maps",
-    title: "Maps",
-    rtlTitle: "خرائط",
-    icon: "icon-pin",
-    class: "" },
   {
     path: "/notifications",
     title: "Notifications",
@@ -38,7 +32,7 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: "/user",
-    title: "User Profile",
+    title: "Profilul Tau",
     rtlTitle: "ملف تعريفي للمستخدم",
     icon: "icon-single-02",
     class: ""
@@ -51,17 +45,10 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/typography",
-    title: "Typography",
+    path: "/announces",
+    title: "Anunturi",
     rtlTitle: "طباعة",
     icon: "icon-align-center",
-    class: ""
-  },
-  {
-    path: "/rtl",
-    title: "RTL Support",
-    rtlTitle: "ار تي ال",
-    icon: "icon-world",
     class: ""
   }
 ];
