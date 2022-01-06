@@ -5,7 +5,7 @@ Comes packed with all plugins that you might need inside a project and documenta
 Have over 16 individual components, giving you the freedom of choosing and combining. This means that there are thousands of possible combinations. All components can take variations in color, that you can easily modify using SASS files. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
 We thought about everything, so this dashboard comes with 2 versions, Dark Mode and Light Mode.
 
-![Product Gif](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/black-dashboard-angular/bd_angular.gif)
+![Photo](https://i.ibb.co/wsJ3xzX/Screenshot-2022-01-06-at-22-57-47.png)
 
 ## Terminal Commands
 
