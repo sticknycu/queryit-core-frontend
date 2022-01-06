@@ -17,12 +17,12 @@ export class NotificationsComponent implements OnInit {
 
   constructor(private toastr: ToastrService) {}
 
-  showNotification(from, align){
+  showNotification(from, align, color){
 
-      const color = Math.floor((Math.random() * 5) + 1);
+      //const color = Math.floor((Math.random() * 5) + 1);
 
       switch(color){
-        case 1:
+        case "info":
         this.toastr.info('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Welcome to <b>Black Dashboard Angular</b> - a beautiful freebie for every web developer.', '', {
            disableTimeOut: true,
            closeButton: true,
@@ -31,7 +31,7 @@ export class NotificationsComponent implements OnInit {
            positionClass: 'toast-' + from + '-' +  align
          });
         break;
-        case 2:
+        case "success":
         this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Welcome to <b>Black Dashboard Angular</b> - a beautiful freebie for every web developer.', '', {
            disableTimeOut: true,
            closeButton: true,
@@ -40,7 +40,7 @@ export class NotificationsComponent implements OnInit {
            positionClass: 'toast-' + from + '-' +  align
          });
         break;
-        case 3:
+        case "warning":
         this.toastr.warning('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Welcome to <b>Black Dashboard Angular</b> - a beautiful freebie for every web developer.', '', {
            disableTimeOut: true,
            closeButton: true,
@@ -49,7 +49,7 @@ export class NotificationsComponent implements OnInit {
            positionClass: 'toast-' + from + '-' +  align
          });
         break;
-        case 4:
+        case "error":
         this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Welcome to <b>Black Dashboard Angular</b> - a beautiful freebie for every web developer.', '', {
            disableTimeOut: true,
            enableHtml: true,
@@ -58,7 +58,7 @@ export class NotificationsComponent implements OnInit {
            positionClass: 'toast-' + from + '-' +  align
          });
          break;
-         case 5:
+         case "show":
          this.toastr.show('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Welcome to <b>Black Dashboard Angular</b> - a beautiful freebie for every web developer.', '', {
             disableTimeOut: true,
             closeButton: true,

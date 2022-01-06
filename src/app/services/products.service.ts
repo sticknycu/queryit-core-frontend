@@ -3,18 +3,40 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../model/product';
 
+const baseURL = 'http://localhost:8080/products';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  private productsUrl: string;
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-    this.productsUrl = 'http://localhost:8080/products';
+  readAll(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(baseURL);
   }
 
-  public findAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl);
+  read(productId: number): Observable<Product> {
+    return this.httpClient.get<Product>(`${baseURL}/${productId}`);
+  }
+
+  create(product: Product): Observable<Product> {
+    return this.httpClient.post<Product>(baseURL, product);
+  }
+
+  update(productId: number, product: Product): Observable<Product> {
+    return this.httpClient.put<Product>(`${baseURL}/${productId}`, product);
+  }
+
+  delete(productId: number): Observable<Product> {
+    return this.httpClient.delete<Product>(`${baseURL}/${productId}`);
+  }
+
+  deleteAll(): Observable<any> {
+    return this.httpClient.delete(baseURL);
+  }
+
+  searchById(productId: number): Observable<Product> {
+    return this.httpClient.get<Product>(`${baseURL}/${productId}`);
   }
 }

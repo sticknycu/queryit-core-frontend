@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
+import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public isCollapsed = true;
 
   closeResult: string;
-
   constructor(
     location: Location,
     private element: ElementRef,
@@ -65,6 +64,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
       navbar.classList.add("navbar-transparent");
       navbar.classList.remove("bg-white");
     }
+  }
+
+  public handleLogout() {
+    // redirect to logout
+    document.location.href="http://localhost:4200/"
   }
 
   sidebarOpen() {

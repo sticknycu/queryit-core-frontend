@@ -1,4 +1,4 @@
-name: run-front_end
+name: run-core-frontend
 
 on: push
 
