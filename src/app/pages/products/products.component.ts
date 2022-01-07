@@ -3,6 +3,7 @@ import {Product} from '../../model/product';
 import {ProductsService} from '../../services/products.service';
 import {NotificationsComponent} from '../notifications/notifications.component';
 import {ToastrService} from 'ngx-toastr';
+import {repeat} from 'rxjs';
 
 @Component({
   selector: "app-products",
@@ -23,21 +24,31 @@ export class ProductsComponent implements OnInit {
 
   handleSubtract = (product: Product, message: string) => {
     product.quantity--;
-    this.productService.update(product.id, product).subscribe(response => {
-      this.showNotification('success', message);
-      const index = this.products.findIndex(item => item.id = response.id);
-      this.products[index] = response;
-    }, error => {
-      this.showNotification('error', error);
-    })
+    if (product.quantity != 0) {
+      this.productService.update(product.id, product).subscribe(response => {
+        this.showNotification('success', message);
+
+        let productIndex = this.products.findIndex(productSearched => productSearched.id == response.id);
+        this.products[productIndex] = response;
+
+        this.ngOnInit();
+      }, error => {
+        this.showNotification('error', error);
+      });
+    } else {
+      this.handleDelete(product, message);
+    }
   }
 
   handleAdd = (product: Product, message: string) => {
     product.quantity++;
     this.productService.update(product.id, product).subscribe(response => {
       this.showNotification('success', message);
-      const index = this.products.findIndex(item => item.id = response.id);
-      this.products[index] = response;
+
+      let productIndex = this.products.findIndex(productSearched => productSearched.id == response.id);
+      this.products[productIndex] = response;
+
+      this.ngOnInit();
     }, error => {
       this.showNotification('error', error);
     })
@@ -45,8 +56,9 @@ export class ProductsComponent implements OnInit {
 
   handleDelete = (product: Product, message: string) => {
     this.productService.delete(product.id).subscribe(response => {
-      this.products.filter(object => object != response);
+      this.products = this.products.filter(object => object != response);
       this.showNotification('success', message);
+      this.ngOnInit();
     },
     error => {
       this.showNotification('error', error);

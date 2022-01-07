@@ -1,4 +1,5 @@
 export class Product {
+
     constructor(private _id: number, private _name: string, private _iconUrl: string, private _quantity: number,
                 private _price: number) {
     }
