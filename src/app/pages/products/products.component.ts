@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit {
         let productIndex = this.products.findIndex(productSearched => productSearched.id == response.id);
         this.products[productIndex] = response;
 
-        this.ngOnInit();
+        //this.ngOnInit();
       }, error => {
         this.showNotification('error', error);
       });
@@ -48,7 +48,7 @@ export class ProductsComponent implements OnInit {
       let productIndex = this.products.findIndex(productSearched => productSearched.id == response.id);
       this.products[productIndex] = response;
 
-      this.ngOnInit();
+      //this.ngOnInit();
     }, error => {
       this.showNotification('error', error);
     })
