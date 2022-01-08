@@ -22,6 +22,20 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  sort(typeOfSort: string) {
+    if (typeOfSort == 'name') {
+      this.products = this.products.sort((product1, product2) => this.sortByName(product1.name.toLowerCase(), product2.name.toLowerCase()));
+    }
+  }
+
+  sortByName(product1: string, product2: string) {
+    if (product1 >= product2) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+
   handleSubtract = (product: Product, message: string) => {
     product.quantity--;
     if (product.quantity != 0) {

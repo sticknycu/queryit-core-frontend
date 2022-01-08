@@ -12,7 +12,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
   public menuItems: any[];
   test: Date = new Date();
   closeResult: string;
-  public sidebarColor: string = "red";
+  public sidebarColor: string = "blue";
   public isCollapsed = true;
   mobile_menu_visible: any = 0;
   private toggleButton: any;

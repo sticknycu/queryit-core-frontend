@@ -4,8 +4,14 @@
     <div class=" col-md-12">
       <div class=" card">
         <div class=" card-header">
-          <h5 class=" title">Produse valabile</h5>
-        </div>
+          <h3 class=" title">Produse valabile</h3>
+          <div ngbDropdown class="text-right">
+            <button class="btn btn-default btn-round" id="dropdownBasic1" ngbDropdownToggle>Filtreaza</button>
+            <div class="dropdown-menu-right" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem (click)="sort('name')">Nume</button>
+              <button ngbDropdownItem (click)="sort('category')">Categorie</button>
+            </div>
+          </div>
         <div class=" card-body all-icons">
           <div class=" row">
 
