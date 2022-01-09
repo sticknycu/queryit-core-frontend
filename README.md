@@ -22,7 +22,7 @@ We thought about everything, so this dashboard comes with 2 versions, Dark Mode 
 Within the download you'll find the following directories and files:
 
 ```
-black-dashboard-angular
+queryit-core-frontend
 ├── CHANGELOG.md
 ├── documentation
 ├── ISSUE_TEMPLATE.md

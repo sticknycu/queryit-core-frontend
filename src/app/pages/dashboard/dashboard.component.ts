@@ -319,7 +319,7 @@ export class DashboardComponent implements OnInit {
     var data = {
       labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
       datasets: [{
-        label: "Data",
+        label: "Valoare",
         fill: true,
         backgroundColor: gradientStroke,
         borderColor: '#ec250d',
@@ -355,9 +355,9 @@ export class DashboardComponent implements OnInit {
     gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
 
     var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
+      labels: ['AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
       datasets: [{
-        label: "My First dataset",
+        label: "Valoare",
         fill: true,
         backgroundColor: gradientStroke,
         borderColor: '#00d6b4',
@@ -408,7 +408,7 @@ export class DashboardComponent implements OnInit {
       data: {
         labels: chart_labels,
         datasets: [{
-          label: "My First dataset",
+          label: "Valoare",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#ec250d',
@@ -446,9 +446,9 @@ export class DashboardComponent implements OnInit {
         display: false
       },
       data: {
-        labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+        labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
         datasets: [{
-          label: "Countries",
+          label: "Valoare",
           fill: true,
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,

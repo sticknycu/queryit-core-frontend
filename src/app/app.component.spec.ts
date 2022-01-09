@@ -16,10 +16,10 @@ describe("AppComponent", () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'black-dashboard-angular'`, () => {
+  it(`should have as title 'QueryIT-Core-Frontend'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual("black-dashboard-angular");
+    expect(app.title).toEqual("QueryIT-Core-Frontend");
   });
 
   it("should render title in a h1 tag", () => {
@@ -27,7 +27,7 @@ describe("AppComponent", () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector("h1").textContent).toContain(
-      "Welcome to black-dashboard-angular!"
+      "Welcome to QueryIT-Core-Frontend!"
     );
   });
 });

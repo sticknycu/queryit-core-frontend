@@ -1,6 +1,6 @@
 {
-  "name": "black-dashboard-angular",
-  "version": "1.2.0",
+  "name": "QueryIT-Core-Frontend",
+  "version": "1.0.0",
   "description": "Black Dasboard Angular, a Creative Tim Desgin. Coded by Creative Tim",
   "scripts": {
     "ng": "ng",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creativetimofficial/black-dashboard-angular.git"
+    "url": "git+https://github.com/creativetimofficial/QueryIT-Core-Frontend.git"
   },
   "keywords": [
     "angular dashboard",
@@ -56,9 +56,9 @@
   "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/creativetimofficial/black-dashboard-angular/issues"
+    "url": "https://github.com/creativetimofficial/QueryIT-Core-Frontend/issues"
   },
-  "homepage": "https://demos.creative-tim.com/black-dashboard-angular/#/dashboard",
+  "homepage": "https://demos.creative-tim.com/QueryIT-Core-Frontend/#/dashboard",
   "private": false,
   "dependencies": {
     "@angular/animations": "13.1.1",

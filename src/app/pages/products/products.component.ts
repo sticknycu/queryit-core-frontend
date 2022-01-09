@@ -3,7 +3,8 @@ import {Product} from '../../model/product';
 import {ProductsService} from '../../services/products.service';
 import {NotificationsComponent} from '../notifications/notifications.component';
 import {ToastrService} from 'ngx-toastr';
-import {repeat} from 'rxjs';
+import {Category} from '../../model/category';
+import {CategoryService} from '../../services/category.service';
 
 @Component({
   selector: "app-products",
@@ -12,24 +13,40 @@ import {repeat} from 'rxjs';
 export class ProductsComponent implements OnInit {
 
   products: Product[];
+  categories: Category[];
   notifications: NotificationsComponent;
 
-  constructor(private productService: ProductsService, private toastr: ToastrService) {}
+  constructor(private productService: ProductsService,
+              private categoryService: CategoryService,
+              private toastr: ToastrService) {}
 
   ngOnInit() {
     this.productService.readAll().subscribe(data => {
       this.products = data;
-    })
+    });
+    this.categoryService.readAll().subscribe(data => {
+      this.categories = data;
+    });
   }
 
   sort(typeOfSort: string) {
     if (typeOfSort == 'name') {
       this.products = this.products.sort((product1, product2) => this.sortByName(product1.name.toLowerCase(), product2.name.toLowerCase()));
+    } else if (typeOfSort == 'category') {
+      this.products = this.products.sort((product1, product2) => this.sortById(product1.category.id, product2.category.id));
     }
   }
 
-  sortByName(product1: string, product2: string) {
-    if (product1 >= product2) {
+  sortById(id1: number, id2: number) {
+    if (id1 >= id2) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+
+  sortByName(name1: string, name2: string) {
+    if (name1 >= name2) {
       return 1;
     } else {
       return -1;
@@ -77,6 +94,12 @@ export class ProductsComponent implements OnInit {
     error => {
       this.showNotification('error', error);
         });
+  }
+
+  getProductsByCategoryId = (categoryId: number) => {
+    this.productService.getProductsByCategoryId(categoryId).subscribe(response => {
+      this.products = response;
+    });
   }
 
   showNotification = (type, message) => {

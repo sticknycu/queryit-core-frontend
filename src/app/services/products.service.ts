@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../model/product';
+import {Category} from '../model/category';
 
-const baseURL = 'http://localhost:8080/products';
+const baseURL = 'http://localhost:8080/v1/products';
+const baseURLByCategoryId = 'http://localhost:8080/v1/productsByCategoryId';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,10 @@ export class ProductsService {
 
   read(productId: number): Observable<Product> {
     return this.httpClient.get<Product>(`${baseURL}/${productId}`);
+  }
+
+  getProductsByCategoryId(categoryId: number): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(`${baseURLByCategoryId}/${categoryId}`);
   }
 
   create(product: Product): Observable<Product> {

@@ -1,7 +1,7 @@
 <!--
  IMPORTANT: Please use the following link to create a new issue:
 
-  https://www.creative-tim.com/new-issue/black-dashboard-angular
+  https://www.creative-tim.com/new-issue/QueryIT-Core-Frontend
 
 **If your issue was not created using the app above, it will be closed immediately.**
 -->

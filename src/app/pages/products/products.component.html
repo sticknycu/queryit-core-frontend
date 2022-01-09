@@ -12,13 +12,15 @@
               <button ngbDropdownItem (click)="sort('category')">Categorie</button>
             </div>
           </div>
-        <div class=" card-body all-icons">
+          <div *ngFor="let category of categories">
+            <h3>Categoria {{category.name}}</h3>
+            <div class=" card-body all-icons">
           <div class=" row">
 
             <div *ngFor="let product of products"
               class=" font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6"
             >
-              <div class=" font-icon-detail">
+                <div *ngIf="product.category.id == category.id" class=" font-icon-detail">
                 <button type="button" class="btn btn-danger btn-round" (click)="handleDelete(product, 'Ai sters cu succes item-ul!')">Sterge</button>
                 <img src="{{product.iconUrl}}">
                 <p>{{ product.name }}</p>
@@ -28,7 +30,9 @@
                 <button type="button" class="btn btn-default btn-round" (click)="handleAdd(product, 'Ai adaugat cu succes un item!')">Adauga</button>
               </div>
             </div>
+              </div>
           </div>
+            </div>
         </div>
       </div>
     </div>
