@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../model/product';
-import {Category} from '../model/category';
 
 const baseURL = 'http://localhost:8080/v1/products';
 const baseURLByCategoryId = 'http://localhost:8080/v1/productsByCategoryId';

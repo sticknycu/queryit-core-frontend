@@ -1,40 +1,65 @@
-
 <div class=" content">
-  <div class=" row">
-    <div class=" col-md-12">
-      <div class=" card">
-        <div class=" card-header">
-          <h3 class=" title">Produse valabile</h3>
-          <div ngbDropdown class="text-right">
-            <button class="btn btn-default btn-round" id="dropdownBasic1" ngbDropdownToggle>Filtreaza</button>
-            <div class="dropdown-menu-right" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem (click)="sort('name')">Nume</button>
-              <button ngbDropdownItem (click)="sort('category')">Categorie</button>
-            </div>
-          </div>
-          <div *ngFor="let category of categories">
-            <h3>Categoria {{category.name}}</h3>
-            <div class=" card-body all-icons">
-          <div class=" row">
+    <div class=" row">
+        <div class=" col-md-12">
+            <div class=" card">
+                <div class=" card-header">
+                    <h3 class=" title">Produse valabile</h3>
+                    <div class="text-right" ngbDropdown>
+                        <button class="btn btn-default btn-round" id="dropdownBasic1" ngbDropdownToggle>Filtreaza
+                            <div aria-labelledby="dropdownBasic1" class="dropdown-menu-right" ngbDropdownMenu>
+                                <button (click)="sort('name')" ngbDropdownItem>Nume</button>
+                                <button (click)="sort('category')" ngbDropdownItem>Categorie</button>
+                            </div>
+                        </button>
+                        <div *ngIf="categoryId != 0">
+                            <button (click)="decreaseCategoryId()" class="btn btn-secondary btn-round">
+                                <svg class="bi bi-arrow-left" fill="currentColor" height="16" viewBox="0 0 16 16"
+                                     width="16" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                                          fill-rule="evenodd"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <button (click)="increaseCategoryId()" class="btn btn-secondary btn-round">
+                            <svg class="bi bi-arrow-right" fill="currentColor" height="16" viewBox="0 0 16 16"
+                                 width="16" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                                      fill-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <h3>Categoria {{categories[categoryId].name}}</h3>
+                    <div class=" card-body all-icons">
+                        <div class=" row">
 
-            <div *ngFor="let product of products"
-              class=" font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6"
-            >
-                <div *ngIf="product.category.id == category.id" class=" font-icon-detail">
-                <button type="button" class="btn btn-danger btn-round" (click)="handleDelete(product, 'Ai sters cu succes item-ul!')">Sterge</button>
-                <img src="{{product.iconUrl}}">
-                <p>{{ product.name }}</p>
-                <p>Cantitate disponibila: {{ product.quantity }}</p>
-                <p>Pret: {{ product.price }}</p>
-                <button type="button" class="btn btn-default btn-round" (click)="handleSubtract(product, 'Ai redus cu succes un item!')">Reduce</button>
-                <button type="button" class="btn btn-default btn-round" (click)="handleAdd(product, 'Ai adaugat cu succes un item!')">Adauga</button>
-              </div>
-            </div>
-              </div>
-          </div>
+                            <div *ngFor="let product of products"
+                                 class=" font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6"
+                            >
+                                <div *ngIf="product.category.id == categoryId">
+                                    <div class=" font-icon-detail">
+                                        <button (click)="handleDelete(product, 'Ai sters cu succes item-ul!')"
+                                                class="btn btn-danger btn-round"
+                                                type="button">Sterge
+                                        </button>
+                                        <img src="{{product.iconUrl}}">
+                                        <p>{{ product.name }}</p>
+                                        <p>Cantitate disponibila: {{ product.quantity }}</p>
+                                        <p>Pret: {{ product.price }}</p>
+                                        <button (click)="handleSubtract(product, 'Ai redus cu succes un item!')"
+                                                class="btn btn-default btn-round"
+                                                type="button">Reduce
+                                        </button>
+                                        <button (click)="handleAdd(product, 'Ai adaugat cu succes un item!')"
+                                                class="btn btn-default btn-round"
+                                                type="button">Adauga
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

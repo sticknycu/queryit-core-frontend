@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   categories: Category[];
   notifications: NotificationsComponent;
+  categoryId: number = 0;
 
   constructor(private productService: ProductsService,
               private categoryService: CategoryService,
@@ -28,6 +29,11 @@ export class ProductsComponent implements OnInit {
       this.categories = data;
     });
   }
+
+  // 14 e categoryId maxim
+  increaseCategoryId = () => this.categoryId == 14 ? this.categoryId = 14 : this.categoryId++;
+
+  decreaseCategoryId = () => this.categoryId--;
 
   sort(typeOfSort: string) {
     if (typeOfSort == 'name') {
