@@ -4,13 +4,9 @@
             <div class=" card">
                 <div class=" card-header">
                     <h3 class=" title">Produse valabile</h3>
-                    <div class="text-right" ngbDropdown>
-                        <button class="btn btn-default btn-round" id="dropdownBasic1" ngbDropdownToggle>Filtreaza
-                            <div aria-labelledby="dropdownBasic1" class="dropdown-menu-right" ngbDropdownMenu>
-                                <button (click)="sort('name')" ngbDropdownItem>Nume</button>
-                                <button (click)="sort('category')" ngbDropdownItem>Categorie</button>
-                            </div>
-                        </button>
+
+                    <button (click)="sort('name')" class="btn btn-secondary" type="button">Filtreaza</button>
+                    <div class="row">
                         <div *ngIf="categoryId != 0">
                             <button (click)="decreaseCategoryId()" class="btn btn-secondary btn-round">
                                 <svg class="bi bi-arrow-left" fill="currentColor" height="16" viewBox="0 0 16 16"
@@ -32,27 +28,30 @@
                     <div class=" card-body all-icons">
                         <div class=" row">
 
-                            <div *ngFor="let product of products"
-                                 class=" font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6"
-                            >
-                                <div *ngIf="product.category.id == categoryId">
+                            <div *ngFor="let product of products">
+                                <div *ngIf="product.category.id == categoryId" class=" font-icon-list col-sm-auto"
+                                >
                                     <div class=" font-icon-detail">
-                                        <button (click)="handleDelete(product, 'Ai sters cu succes item-ul!')"
-                                                class="btn btn-danger btn-round"
-                                                type="button">Sterge
-                                        </button>
-                                        <img src="{{product.iconUrl}}">
+                                        <img class="img-fluid" src="{{product.iconUrl}}">
                                         <p>{{ product.name }}</p>
                                         <p>Cantitate disponibila: {{ product.quantity }}</p>
                                         <p>Pret: {{ product.price }}</p>
-                                        <button (click)="handleSubtract(product, 'Ai redus cu succes un item!')"
-                                                class="btn btn-default btn-round"
-                                                type="button">Reduce
-                                        </button>
                                         <button (click)="handleAdd(product, 'Ai adaugat cu succes un item!')"
                                                 class="btn btn-default btn-round"
                                                 type="button">Adauga
                                         </button>
+                                        <button (click)="handleSubtract(product, 'Ai redus un item cu succes!')"
+                                                class="btn btn-default btn-round"
+                                                type="button">Reduce
+                                        </button>
+                                        <div class="row">
+                                            <div class="col align-content-lg-center">
+                                                <button (click)="handleDelete(product, 'Ai sters cu succes item-ul!')"
+                                                        class="btn btn-danger btn-round"
+                                                        type="button">Sterge
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

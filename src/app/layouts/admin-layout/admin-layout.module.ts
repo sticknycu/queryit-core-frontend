@@ -13,6 +13,7 @@ import { TablesComponent } from "../../pages/tables/tables.component";
 import { AnnouncesComponent } from "../../pages/announces/announces.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     HttpClientModule,
     NgbModule,
+    BsDropdownModule,
   ],
   declarations: [
     DashboardComponent,
