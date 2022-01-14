@@ -1,29 +1,33 @@
 import { Component, OnInit } from "@angular/core";
-import {Product} from '../../model/product';
 import {Category} from '../../model/category';
 import {NotificationsComponent} from '../notifications/notifications.component';
-import {ProductsService} from '../../services/products.service';
 import {CategoryService} from '../../services/category.service';
 import {ToastrService} from 'ngx-toastr';
+import {PromotionsService} from '../../services/promotions.service';
+import {Promotion} from '../../model/promotion';
+import {kaLocale} from 'ngx-bootstrap/chronos';
+import {DatePipe} from '@angular/common';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  selector: "app-tables",
-  templateUrl: "tables.component.html"
+  selector: "app-promotions",
+  templateUrl: "promotions.component.html"
 })
-export class TablesComponent implements OnInit {
-  products: Product[];
+export class PromotionsComponent implements OnInit {
+  promotions: Promotion[];
   categories: Category[];
   notifications: NotificationsComponent;
   categoryId: number = 0;
 
-  constructor(private productService: ProductsService,
+  constructor(private promotionsService: PromotionsService,
               private categoryService: CategoryService,
-              private toastr: ToastrService) {}
+              private toastr: ToastrService,
+              private translateService: TranslateService) {}
 
   ngOnInit() {
-    this.productService.readAll().subscribe(data => {
-      this.products = data;
-    });
+    this.promotionsService.readAll().subscribe(data => {
+      this.promotions = data;
+    })
     this.categoryService.readAll().subscribe(data => {
       this.categories = data;
     });
@@ -36,9 +40,9 @@ export class TablesComponent implements OnInit {
 
   sort(typeOfSort: string) {
     if (typeOfSort == 'name') {
-      this.products = this.products.sort((product1, product2) => this.sortByName(product1.name.toLowerCase(), product2.name.toLowerCase()));
+      this.promotions = this.promotions.sort((promotion1, promotion2) => this.sortByName(promotion1.name.toLowerCase(), promotion2.name.toLowerCase()));
     } else if (typeOfSort == 'category') {
-      this.products = this.products.sort((product1, product2) => this.sortById(product1.category.id, product2.category.id));
+      this.promotions = this.promotions.sort((promotion1, promotion2) => this.sortById(promotion1.id, promotion2.id));
     }
   }
 
@@ -58,31 +62,31 @@ export class TablesComponent implements OnInit {
     }
   }
 
-  handleSubtract = (product: Product, message: string) => {
-    product.quantity--;
-    if (product.quantity != 0) {
-      this.productService.update(product.id, product).subscribe(response => {
+  handleSubtract = (promotion: Promotion, message: string) => {
+    promotion.quantityNeeded--;
+    if (promotion.quantityNeeded != 0) {
+      this.promotionsService.update(promotion.id, promotion).subscribe(response => {
         this.showNotification('success', message);
 
-        let productIndex = this.products.findIndex(productSearched => productSearched.id == response.id);
-        this.products[productIndex] = response;
+        let promotionIndex = this.promotions.findIndex(promotionSearched => promotionSearched.id == response.id);
+        this.promotions[promotionIndex] = response;
 
         //this.ngOnInit();
       }, error => {
         this.showNotification('error', error);
       });
     } else {
-      this.handleDelete(product, message);
+      this.handleDelete(promotion, message);
     }
   }
 
-  handleAdd = (product: Product, message: string) => {
-    product.quantity++;
-    this.productService.update(product.id, product).subscribe(response => {
+  handleAdd = (promotion: Promotion, message: string) => {
+    promotion.quantityNeeded++;
+    this.promotionsService.update(promotion.id, promotion).subscribe(response => {
       this.showNotification('success', message);
 
-      let productIndex = this.products.findIndex(productSearched => productSearched.id == response.id);
-      this.products[productIndex] = response;
+      let promotionIndex = this.promotions.findIndex(promotionSearched => promotionSearched.id == response.id);
+      this.promotions[promotionIndex] = response;
 
       //this.ngOnInit();
     }, error => {
@@ -90,9 +94,9 @@ export class TablesComponent implements OnInit {
     })
   }
 
-  handleDelete = (product: Product, message: string) => {
-    this.productService.delete(product.id).subscribe(response => {
-          this.products = this.products.filter(object => object != response);
+  handleDelete = (promotion: Promotion, message: string) => {
+    this.promotionsService.delete(promotion.id).subscribe(response => {
+          this.promotions = this.promotions.filter(object => object != response);
           this.showNotification('success', message);
           this.ngOnInit();
         },
@@ -101,10 +105,9 @@ export class TablesComponent implements OnInit {
         });
   }
 
-  getProductsByCategoryId = (categoryId: number) => {
-    this.productService.getProductsByCategoryId(categoryId).subscribe(response => {
-      this.products = response;
-    });
+  expireDate(longDate: number) {
+    const datePipe: DatePipe = new DatePipe(this.translateService.currentLang);
+    return datePipe.transform(longDate, 'dd-MMM-YYYY HH:mm:ss')
   }
 
   showNotification = (type, message) => {

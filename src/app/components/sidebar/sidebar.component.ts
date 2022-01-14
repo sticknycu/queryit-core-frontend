@@ -31,8 +31,8 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/tables",
-    title: "Table List",
+    path: "/promotions",
+    title: "Promotii",
     rtlTitle: "قائمة الجدول",
     icon: "icon-puzzle-10",
     class: ""
