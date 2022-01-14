@@ -5,7 +5,10 @@
                 <div class=" card-header">
                     <h3 class=" title">Produse valabile</h3>
 
-                    <button (click)="sort('name')" class="btn btn-secondary" type="button">Filtreaza</button>
+                    <div class="row">
+                        <button (click)="sort('name')" class="btn btn-secondary" type="button">Filtreaza</button>
+                        <button class="btn btn-secondary" type="button">Adauga</button>
+                    </div>
                     <div class="row">
                         <div *ngIf="categoryId != 0">
                             <button (click)="decreaseCategoryId()" class="btn btn-secondary btn-round">
