@@ -5,9 +5,6 @@ import {CategoryService} from '../../services/category.service';
 import {ToastrService} from 'ngx-toastr';
 import {PromotionsService} from '../../services/promotions.service';
 import {Promotion} from '../../model/promotion';
-import {kaLocale} from 'ngx-bootstrap/chronos';
-import {DatePipe} from '@angular/common';
-import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: "app-promotions",
@@ -21,8 +18,7 @@ export class PromotionsComponent implements OnInit {
 
   constructor(private promotionsService: PromotionsService,
               private categoryService: CategoryService,
-              private toastr: ToastrService,
-              private translateService: TranslateService) {}
+              private toastr: ToastrService) {}
 
   ngOnInit() {
     this.promotionsService.readAll().subscribe(data => {
@@ -103,11 +99,6 @@ export class PromotionsComponent implements OnInit {
         error => {
           this.showNotification('error', error);
         });
-  }
-
-  expireDate(longDate: number) {
-    const datePipe: DatePipe = new DatePipe(this.translateService.currentLang);
-    return datePipe.transform(longDate, 'dd-MMM-YYYY HH:mm:ss')
   }
 
   showNotification = (type, message) => {

@@ -35,7 +35,7 @@
                                         <img class="img-fluid" src="{{promotion.productId.iconUrl}}">
                                         <p>{{ promotion.productId.name }}</p>
                                         <p>Cantitate necesara: {{ promotion.quantityNeeded }}</p>
-                                        <p>Data expirare: {{ expireDate(promotion.expireDate) }}</p>
+                                        <p>Data expirare: {{promotion.expireDate | date: "d MMM y, h:mm:ss a"}}</p>
                                         <button (click)="handleAdd(promotion, 'Ai adaugat cu succes un item!')"
                                                 class="btn btn-default btn-round"
                                                 type="button">Adauga
