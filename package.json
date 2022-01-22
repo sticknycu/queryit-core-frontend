@@ -74,7 +74,7 @@
     "@ngx-translate/core": "^14.0.0",
     "chart.js": "3.7.0",
     "core-js": "3.15.2",
-    "ngx-bootstrap": "^6.2.0",
+    "ngx-bootstrap": "^8.0.0",
     "ngx-toastr": "14.0.0",
     "rxjs": "7.5.2",
     "tslib": "2.3.0",
