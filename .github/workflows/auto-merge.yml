@@ -5,7 +5,7 @@ on:
     types:
       - completed
     workflows:
-      - 'front-end'
+      - 'run_core_frontend'
 
 jobs:
   merge-me:
