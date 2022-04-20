@@ -74,7 +74,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@popperjs/core": "^2.11.5",
     "chart.js": "2.9.4",
-    "core-js": "3.22.0",
+    "core-js": "3.22.1",
     "ngx-bootstrap": "^8.0.0",
     "ngx-toastr": "14.3.0",
     "popper.js": "^1.16.1",
