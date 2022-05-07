@@ -14,7 +14,7 @@ export class PromotionsComponent implements OnInit {
   promotions: Promotion[];
   categories: Category[];
   notifications: NotificationsComponent;
-  categoryId: number = 0;
+  categoryId: number = 1;
 
   constructor(private promotionsService: PromotionsService,
               private categoryService: CategoryService,
@@ -29,8 +29,8 @@ export class PromotionsComponent implements OnInit {
     });
   }
 
-  // 14 e categoryId maxim
-  increaseCategoryId = () => this.categoryId == 14 ? this.categoryId = 14 : this.categoryId++;
+  // 15 e categoryId maxim
+  increaseCategoryId = () => this.categoryId++;
 
   decreaseCategoryId = () => this.categoryId--;
 

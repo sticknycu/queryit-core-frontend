@@ -9,7 +9,7 @@ export class Product {
                 private _name: string,
                 private _price: number,
                 private _quantity: number,
-                private _iconUrl: string,
+                private _iconPath: string,
                 private _category: Category,
                 private _promotion: Promotion,
                 private _miniMarket: MiniMarket,
@@ -64,12 +64,12 @@ export class Product {
         this._name = value;
     }
 
-    get iconUrl(): string {
-        return this._iconUrl;
+    get iconPath(): string {
+        return this._iconPath;
     }
 
-    set iconUrl(value: string) {
-        this._iconUrl = value;
+    set iconPath(value: string) {
+        this._iconPath = value;
     }
 
     get quantity(): number {

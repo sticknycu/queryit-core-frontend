@@ -3,8 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../model/product';
 
-const baseURL = 'http://localhost:8080/v1/products';
-const baseURLByCategoryId = 'http://localhost:8080/v1/productsByCategoryId';
+const baseURL = 'http://localhost:9090/api/products/v1';
+const baseURLByCategoryId = 'http://localhost:9090/api/products/v1/productsByCategoryId';
 
 @Injectable({
   providedIn: 'root'
