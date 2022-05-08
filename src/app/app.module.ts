@@ -13,6 +13,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
+import { CategoryComponent } from './pages/category/category.component';
+import { DepositComponent } from './pages/deposits/deposit.component';
+import { ManufacturerComponent } from './pages/manufacturers/manufacturer.component';
+import { MinimarketComponent } from './pages/minimarkets/minimarket.component';
+import { TruckComponent } from './pages/trucks/truck.component';
 
 @NgModule({
   imports: [
@@ -25,7 +30,7 @@ import { ComponentsModule } from "./components/components.module";
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, CategoryComponent, DepositComponent, ManufacturerComponent, MinimarketComponent, TruckComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
