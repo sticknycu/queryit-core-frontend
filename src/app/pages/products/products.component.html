@@ -6,8 +6,46 @@
                     <h3 class=" title">Produse valabile</h3>
 
                     <div class="row">
-                        <button (click)="sort('name')" class="btn btn-secondary" type="button">Filtreaza</button>
-                        <button class="btn btn-secondary" type="button">Adauga</button>
+                        <button (click)="sort('name')" class="btn btn-secondary" type="button">Sorteaza</button>
+                        <button (click)="showNewProduct()" class="btn btn-secondary" type="button">Adauga</button>
+                        <div class="modal-content" *ngIf="show==true">
+                            <form>
+                                <div class="form-group">
+                                    <label for="formName">Nume</label>
+                                    <input type="text" class="form-control" id="formName" [(ngModel)]= "formName" name= "formName" placeholder="Introdu numele produsului">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formQuantity">Cantitate</label>
+                                    <input type="text" class="form-control" id="formQuantity" [(ngModel)]= "formQuantity" name ="formQuantity" placeholder="Introdu cantitatea produsului">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formPrice">Pret</label>
+                                    <input type="text" class="form-control" id="formPrice" [(ngModel)]= "formPrice" name ="formPrice" placeholder="Introdu pretul produsului">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formIcon">URL Icon</label>
+                                    <input type="text" class="form-control" id="formIcon" [(ngModel)]= "formIcon" name="formIcon" placeholder="Introdu URL-ul produsului">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formCategory">Categoria</label>
+                                    <input type="text" class="form-control" id="formCategory" [(ngModel)]= "formCategory" name="formCategory" placeholder="Introdu categoria">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formPromotion">Promotia</label>
+                                    <input type="text" class="form-control" id="formPromotion" [(ngModel)]= "formPromotion" name="formPromotion" placeholder="Introdu daca exista promotie">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formMinimarket">MiniMarket</label>
+                                    <input type="text" class="form-control" id="formMinimarket" [(ngModel)]= "formMinimarket" name="formMinimarket" placeholder="Introdu daca face parte dintr-un minimarket">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formManufacturer">Furnizor</label>
+                                    <input type="text" class="form-control" id="formManufacturer" [(ngModel)]= "formManufacturer" name="formManufacturer" placeholder="Introdu furnizorul">
+                                </div>
+
+                                <button (click)= "addProduct(formName, formQuantity, formPrice, formIcon, formCategory, formPromotion, formMinimarket, formManufacturer)" type="submit" class="btn btn-primary">Inregistreaza</button>
+                            </form>
+                        </div>
                     </div>
                     <div class="row">
                             <button *ngIf="categoryId != 1" (click)="decreaseCategoryId()" class="btn btn-secondary btn-round">
@@ -17,7 +55,7 @@
                                           fill-rule="evenodd"/>
                                 </svg>
                             </button>
-                        <button *ngIf="categoryId != 15" (click)="increaseCategoryId()" class="btn btn-secondary btn-round">
+                        <button *ngIf="categoryId != indexCategoryAdd" (click)="increaseCategoryId()" class="btn btn-secondary btn-round">
                             <svg class="bi bi-arrow-right" fill="currentColor" height="16" viewBox="0 0 16 16"
                                  width="16" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"

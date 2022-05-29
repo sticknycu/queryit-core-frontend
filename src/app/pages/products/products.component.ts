@@ -5,6 +5,12 @@ import {NotificationsComponent} from '../notifications/notifications.component';
 import {ToastrService} from 'ngx-toastr';
 import {Category} from '../../model/category';
 import {CategoryService} from '../../services/category.service';
+import {Promotion} from '../../model/promotion';
+import {PromotionsService} from '../../services/promotions.service';
+import {MiniMarket} from '../../model/mini-market';
+import {Manufacturer} from '../../model/manufacturer';
+import {MinimarketService} from '../../services/minimarket.service';
+import {ManufacturerService} from '../../services/manufacturer.service';
 
 @Component({
   selector: "app-products",
@@ -14,11 +20,23 @@ export class ProductsComponent implements OnInit {
 
   products: Product[];
   categories: Category[];
+  promotions: Promotion[];
+  minimarkets: MiniMarket[];
+  manufacturers: Manufacturer[];
   notifications: NotificationsComponent;
   categoryId: number = 1;
+  show: boolean = false;
+  indexProductAdd: number = 0;
+  indexPromotionAdd: number = 0;
+  indexCategoryAdd: number = 0;
+  indexMinimarketAdd: number = 0;
+  indexManufacturerAdd: number = 0;
 
   constructor(private productService: ProductsService,
               private categoryService: CategoryService,
+              private promotionsService: PromotionsService,
+              private minimarketService: MinimarketService,
+              private manufacturerService: ManufacturerService,
               private toastr: ToastrService) {}
 
   ngOnInit() {
@@ -28,6 +46,63 @@ export class ProductsComponent implements OnInit {
     this.categoryService.readAll().subscribe(data => {
       this.categories = data;
     });
+    this.promotionsService.readAll().subscribe(data => {
+      this.promotions = data;
+    });
+    this.minimarketService.readAll().subscribe(data => {
+      this.minimarkets = data;
+    });
+    this.manufacturerService.readAll().subscribe(data => {
+      this.manufacturers = data;
+    })
+
+    this.indexProductAdd = this.products.length + 1;
+    this.indexPromotionAdd = this.promotions.length + 1;
+    this.indexCategoryAdd = this.categories.length + 1;
+    this.indexMinimarketAdd = this.minimarkets.length + 1;
+    this.indexManufacturerAdd = this.manufacturers.length + 1;
+  }
+
+  showNewProduct() {
+    this.show = !this.show;
+  }
+
+  addProduct(name: string, price: number, quantity: number, iconUrl: string, category: string, promotion: number,
+             minimarket: string, manufacturer: string) {
+      let promotionAvailable = null;
+      if (promotion != 0) {
+        promotionAvailable = new Promotion(this.indexPromotionAdd, name, "La " + promotion + " primesti unul gratis",
+            new Date().getDate(), promotion);
+        this.promotionsService.create(promotionAvailable);
+      }
+
+      let categoryId = this.categories.filter(
+          categoryName => categoryName.name == category)[0].id;
+      if (categoryId == null) {
+        let newCategory = new Category(this.indexCategoryAdd, category);
+        this.categoryService.create(newCategory);
+      }
+
+      let minimarketId = this.minimarkets.filter(
+          minimarketName => minimarketName.name == minimarket)[0].id;
+      if (minimarketId == null) {
+        let newMiniMarket = new MiniMarket(this.indexMinimarketAdd, minimarket);
+        this.minimarketService.create(newMiniMarket);
+      }
+
+      let manufacturerId = this.manufacturers.filter(
+          manufacturerName => manufacturerName.name == manufacturer)[0].id;
+      if (manufacturerId == null) {
+        let newManufacturer = new Manufacturer(this.indexManufacturerAdd, manufacturer);
+        this.manufacturerService.create(newManufacturer);
+      }
+
+      let product = new Product(this.indexProductAdd,
+          name, price, quantity, iconUrl, new Category(categoryId, category),
+          null, new MiniMarket(minimarketId, minimarket), new Manufacturer(manufacturerId, manufacturer));
+      this.productService.create(product);
+
+      this.show = false;
   }
 
   increaseCategoryId = () => this.categoryId++;
@@ -162,4 +237,12 @@ export class ProductsComponent implements OnInit {
         break;
     }
   }
+  formName: any;
+  formQuantity: any;
+  formPrice: any;
+  formIcon: any;
+  formCategory: any;
+  formPromotion: any;
+  formMinimarket: any;
+  formManufacturer: any;
 }

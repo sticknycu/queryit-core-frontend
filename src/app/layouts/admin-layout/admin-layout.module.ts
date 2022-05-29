@@ -8,28 +8,37 @@ import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { ProductsComponent } from "../../pages/products/products.component";
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
-import { UserComponent } from "../../pages/user/user.component";
 import { PromotionsComponent } from "../../pages/promotions/promotions.component";
-import { AnnouncesComponent } from "../../pages/announces/announces.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {MatButtonModule} from '@angular/material/button';
+import {CategoryComponent} from '../../pages/category/category.component';
+import {DepositComponent} from '../../pages/deposits/deposit.component';
+import {ManufacturerComponent} from '../../pages/manufacturers/manufacturer.component';
+import {MinimarketComponent} from '../../pages/minimarkets/minimarket.component';
+import {TruckComponent} from '../../pages/trucks/truck.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    HttpClientModule,
-    NgbModule,
-    BsDropdownModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(AdminLayoutRoutes),
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+        BsDropdownModule,
+        MatButtonModule,
+    ],
   declarations: [
     DashboardComponent,
-    UserComponent,
     PromotionsComponent,
     ProductsComponent,
-    AnnouncesComponent,
+      CategoryComponent,
+      DepositComponent,
+      ManufacturerComponent,
+      MinimarketComponent,
+      TruckComponent,
+      DepositComponent,
     NotificationsComponent
   ]
 })

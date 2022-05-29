@@ -1,1 +1,18 @@
-<p>deposit works!</p>
+<div class=" content">
+    <div class=" row">
+        <div class=" col-md-12">
+            <div class=" card">
+                <div class=" card-header mb-5">
+                    <h3 class=" card-title">Depozite Valabile</h3>
+                    <button (click)="sort()" class="btn btn-secondary" type="button">Sorteaza</button>
+                </div>
+                <div class=" card-body">
+                    <div class=" typography-line">
+                        <h4 *ngFor="let deposit of deposits">
+                            {{deposit.name}}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

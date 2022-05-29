@@ -6,12 +6,12 @@
 
 .form-control {
   display: block;
-  width: 15%;
+  width: 50%;
   height: $input-height;
   padding: $input-padding-y $input-padding-x;
   font-size: $font-size-base;
   line-height: $input-line-height;
-  color: $white !important;
+  color: black !important;
   background-color: $input-bg;
   background-clip: padding-box;
   border: $input-border-width solid $input-border-color;

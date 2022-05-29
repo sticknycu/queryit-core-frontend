@@ -13,8 +13,8 @@ export class MinimarketService {
 
   constructor(private httpClient: HttpClient) { }
 
-  readAll(): Observable<MinimarketService[]> {
-    return this.httpClient.get<MinimarketService[]>(baseURL);
+  readAll(): Observable<MiniMarket[]> {
+    return this.httpClient.get<MiniMarket[]>(baseURL);
   }
 
   read(minimarketId: number): Observable<MiniMarket> {

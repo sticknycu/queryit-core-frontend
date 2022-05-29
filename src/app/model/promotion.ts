@@ -3,7 +3,7 @@ import {Product} from './product';
 export class Promotion {
 
     constructor(private _id: number, private _name: string, private _description: string,
-                private _productId: Product, private _expireDate: number, private _quantityNeeded) {
+                private _expireDate: number, private _quantityNeeded) {
     }
 
     get id(): number {
@@ -28,14 +28,6 @@ export class Promotion {
 
     set description(value: string) {
         this._description = value;
-    }
-
-    get productId(): Product {
-        return this._productId;
-    }
-
-    set productId(value: Product) {
-        this._productId = value;
     }
 
     get expireDate(): number {

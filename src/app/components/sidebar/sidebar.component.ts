@@ -22,14 +22,6 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-components",
     class: ""
   },
-
-  {
-    path: "/user",
-    title: "Profilul Tau",
-    rtlTitle: "ملف تعريفي للمستخدم",
-    icon: "icon-single-02",
-    class: ""
-  },
   {
     path: "/promotions",
     title: "Promotii",
@@ -38,10 +30,38 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/announces",
-    title: "Anunturi",
-    rtlTitle: "طباعة",
-    icon: "icon-align-center",
+    path: "/categories",
+    title: "Categorii",
+    rtlTitle: "قائمة الجدول",
+    icon: "icon-puzzle-10",
+    class: ""
+  },
+  {
+    path: "/deposits",
+    title: "Depozite",
+    rtlTitle: "قائمة الجدول",
+    icon: "icon-puzzle-10",
+    class: ""
+  },
+  {
+    path: "/manufacturers",
+    title: "Furnizori",
+    rtlTitle: "قائمة الجدول",
+    icon: "icon-puzzle-10",
+    class: ""
+  },
+  {
+    path: "/minimarkets",
+    title: "MiniMarket-uri",
+    rtlTitle: "قائمة الجدول",
+    icon: "icon-puzzle-10",
+    class: ""
+  },
+  {
+    path: "/trucks",
+    title: "Camioane",
+    rtlTitle: "قائمة الجدول",
+    icon: "icon-puzzle-10",
     class: ""
   }
 ];
